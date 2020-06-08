@@ -47,7 +47,7 @@ function getodos() {
     headers: { Authorization: `Bearer ${token[0]}` },
     contentType: "application/json; charset=utf-8",
     dataType: "json",
-    url: `http://localhost:5000/todos/${token[1]}`,
+    url: `https://taskido-app.herokuapp.com/todos/${token[1]}`,
   })
     .done((response) => {
       localStorage.setItem("todos", JSON.stringify(response));
@@ -64,7 +64,7 @@ function complete(id) {
     headers: { Authorization: `Bearer ${token[0]}` },
     contentType: "application/json; charset=utf-8",
     dataType: "json",
-    url: `http://localhost:5000/todos_mark_completed/${token[1]}/${id}`,
+    url: `https://taskido-app.herokuapp.com/todos_mark_completed/${token[1]}/${id}`,
   })
     .done((response) => {
       localStorage.setItem("todos", JSON.stringify(response));
@@ -81,7 +81,7 @@ function notcomplete(id) {
     headers: { Authorization: `Bearer ${token[0]}` },
     contentType: "application/json; charset=utf-8",
     dataType: "json",
-    url: `http://localhost:5000/todos_mark_completed/${token[1]}/${id}`,
+    url: `https://taskido-app.herokuapp.com/todos_mark_completed/${token[1]}/${id}`,
   })
     .done((response) => {
       localStorage.setItem("todos", JSON.stringify(response));
@@ -96,7 +96,7 @@ function remove(id) {
     headers: { Authorization: `Bearer ${token[0]}` },
     contentType: "application/json; charset=utf-8",
     dataType: "json",
-    url: `http://localhost:5000/todo_delete_completely/${token[1]}/${id}`,
+    url: `https://taskido-app.herokuapp.com/todo_delete_completely/${token[1]}/${id}`,
   })
     .done((response) => {
       localStorage.setItem("todos", JSON.stringify(response));
@@ -112,7 +112,7 @@ function archiveTask(id) {
     headers: { Authorization: `Bearer ${token[0]}` },
     contentType: "application/json; charset=utf-8",
     dataType: "json",
-    url: `http://localhost:5000/todo_archive/${token[1]}/${id}`,
+    url: `https://taskido-app.herokuapp.com/todo_archive/${token[1]}/${id}`,
   })
     .done((response) => {
       localStorage.setItem("todos", JSON.stringify(response));
@@ -127,7 +127,7 @@ function deleteTask(id) {
     headers: { Authorization: `Bearer ${token[0]}` },
     contentType: "application/json; charset=utf-8",
     dataType: "json",
-    url: `http://localhost:5000/todo_deleted/${token[1]}/${id}`,
+    url: `https://taskido-app.herokuapp.com/todo_deleted/${token[1]}/${id}`,
   })
     .done((response) => {
       localStorage.setItem("todos", JSON.stringify(response));
@@ -433,7 +433,7 @@ $("#netowdo").submit(function (e) {
       date: create,
       tasklabel: tasklabel,
     }),
-    url: `http://localhost:5000/todo/add/${token[1]}`,
+    url: `https://taskido-app.herokuapp.com/todo/add/${token[1]}`,
   })
     .done((response) => {
       localStorage.setItem("todos", JSON.stringify(response));
