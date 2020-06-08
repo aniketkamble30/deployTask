@@ -47,7 +47,7 @@ function getodos() {
     headers: { Authorization: `Bearer ${token[0]}` },
     contentType: "application/json; charset=utf-8",
     dataType: "json",
-    url: `https://aniketkamble30.github.io/deployTask/todos/${token[1]}`,
+    url: `http://localhost:5000/todos/${token[1]}`,
   })
     .done((response) => {
       localStorage.setItem("todos", JSON.stringify(response));
