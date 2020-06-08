@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="./base/jquery.js"></script>
+    <script src="./javascript/verification.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>TasKido</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Megrim&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css">
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="shortcut icon" href="./images/logo.png" />
+</head>
+
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-light noshadow">
+        <i id="toggler" class="lnr lnr-menu h3 mr-4" style="cursor: pointer;"></i>
+        <div class="d-flex align-items-center">
+            <img src="./images/logo.png" class="mx-1 brand-logo" alt="">
+            <span class="brand-text">Taskido</span>
+        </div>
+
+        <div class="ml-auto d-flex align-items-center">
+            <button type="button" class="btn text-light bg-info font-weight-bold " data-toggle="modal"
+                data-target="#exampleModal">
+                Add New task
+            </button>
+            <span title="Logout" class="ml-4 lnr lnr-exit h3" style="cursor: pointer;" id="logout"></span>
+        </div>
+    </nav>
+    <div>
+        <nav class="sidenav  bg-light">
+            <div class="nav nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="sidenav-link  active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+                    aria-controls="v-pills-home" aria-selected="true">
+                    <i class="lnr lnr-home"></i>
+                    <span class="sidenav-text">Home</span>
+                </a>
+                <a class="sidenav-link " id="v-pills-tasks-tab" data-toggle="pill" href="#v-pills-tasks" role="tab"
+                    aria-controls="v-pills-tasks " aria-selected="false">
+                    <i class="lnr lnr-list"></i>
+                    <span class="sidenav-text">All Tasks</span>
+                </a>
+                <a class="sidenav-link w" id="v-pills-imps-tab" data-toggle="pill" href="#v-pills-imps" role="tab"
+                    aria-controls="v-pills-imps " aria-selected="false">
+                    <i class="lnr lnr-star"></i>
+                    <span class="sidenav-text">Important</span>
+                </a>
+                <a class="sidenav-link " id="v-pills-archive-tab" data-toggle="pill" href="#v-pills-archive" role="tab"
+                    aria-controls="v-pills-archive " aria-selected="false">
+                    <i class="lnr lnr-enter-down"></i>
+                    <span class="sidenav-text">Archived</span>
+                </a>
+                <a class="sidenav-link " id="v-pills-trash-tab" data-toggle="pill" href="#v-pills-trash" role="tab"
+                    aria-controls="v-pills-trash" aria-selected="false">
+                    <i class="lnr lnr-trash"></i>
+                    <span class="sidenav-text">Trash</span>
+                </a>
+            </div>
+            <ul class="sidenav-nav">
+                <li class="sidenav-item">
+                    <a href="#" class="sidenav-link">
+                        <i>
+                            <div class="switch text-primary pb-4">
+                                <label>
+                                    <input onclick="handleClick()" type="checkbox" checked>
+                                </label>
+                            </div>
+                        </i>
+                        <span class="sidenav-text">Theme</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <main class="p-2">
+            <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                    aria-labelledby="v-pills-home-tab">
+                    <div class="row" id="avd"></div>
+                </div>
+                <div class="tab-pane fade" id="v-pills-tasks" role="tabpanel" aria-labelledby="v-pills-tasks-tab">
+                    <div id="alltabs" class="row"></div>
+                    </div>
+                <div class="tab-pane fade" id="v-pills-imps" role="tabpanel" aria-labelledby="v-pills-imps-tab">
+                
+                    not working
+                </div>
+                <div class="tab-pane fade" id="v-pills-archive" role="tabpanel" aria-labelledby="v-pills-archive-tab">
+                    <div id="archivetab" class="row"></div>
+                </div>
+                <div class="tab-pane fade" id="v-pills-trash" role="tabpanel" aria-labelledby="v-pills-trash-tab">
+                    <div id="deletedtab" class="row"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <div class="modal  fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content bg-light">
+                <div class="modal-header">
+                    <h2 class="modal-title myH1" id="exampleModalLabel">My Task</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body">
+                    <form id="netowdo">
+                        <div class="form-group titlebox">
+                            <input autocomplete="off" type="text" class="form-control" id="tasktitle" name="tasktitle">
+                            <label for="tasktitle" class="bmd-label-floating">What do you want to do ?</label>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 col-12">
+                                <i class="lnr lnr-clock font-weight-bold"></i>
+                                <span class="display-5">
+                                    Set a Deadline
+                                </span>
+                            </div>
+                            <div class="lopoi col-md-8 d-flex pb-3 align-items-center col-12">
+                                <div class="switch">
+                                    <label>
+                                        <input type="checkbox" id="deadlineid">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="deadline" style="display: none;">
+                            <div class="row">
+                                <div class="col-6 datetime">
+                                    <label for="deadline_date">Till</label>
+                                    <input id="deadline_date" type="date" value="" min="" name="deadline_date">
+                                </div>
+                                <div class="col-6 datetime">
+                                    <label for="time">By</label>
+                                    <input id="time" type="time" value="" min="" name="deadline_time">
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 col-12">
+                                <i class="lnr lnr-tag font-weight-bold"></i>
+                                <span class="display-5">
+                                    Important ?
+                                </span>
+                            </div>
+                            <div class="col-md-8 d-flex align-items-center col-12">
+                                <div class="rate">
+                                    <input type="checkbox" id="star3" name="importance" value="1" />
+                                    <label for="star3" title="Important">3 stars</label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="label row">
+                                <p>Label Me</p>
+                                <div class="col-6 custom-control custom-radio">
+                                    <input type="radio" id="Academic" name="taskLabel" class="custom-control-input"
+                                        value="Academic">
+                                    <label class="custom-control-label" for="Academic">Academic</label><br>
+                                </div>
+                                <div class="col-6 custom-control custom-radio">
+                                    <input type="radio" id="Shopping" name="taskLabel" class="custom-control-input"
+                                        value="Shopping">
+                                    <label class="custom-control-label" for="Shopping">Shopping</label><br>
+                                </div>
+                                <div class="col-6 custom-control custom-radio">
+                                    <input type="radio" id="SelfImprovement" name="taskLabel"
+                                        class="custom-control-input" value="SelfImprovement">
+                                    <label class="custom-control-label" for="SelfImprovement">Self
+                                        Improvement</label><br>
+                                </div>
+                                <div class="col-6 custom-control custom-radio">
+                                    <input type="radio" id="Chore" name="taskLabel" class="custom-control-input"
+                                        value="Chore">
+                                    <label class="custom-control-label" for="Chore">Chore</label><br>
+                                </div>
+                                <div class="col-6 custom-control custom-radio">
+                                    <input type="radio" id="Hobby" name="taskLabel" class="custom-control-input"
+                                        value="Hobby">
+                                    <label class="custom-control-label" for="Hobby">Hobby</label><br>
+                                </div>
+                                <div class="col-6 custom-control custom-radio">
+                                    <input type="radio" id="PhysicalActivity" name="taskLabel"
+                                        class="custom-control-input" value="PhysicalActivity">
+                                    <label class="custom-control-label" for="PhysicalActivity">Physical
+                                        Activity</label><br>
+                                </div>
+                                <div class="col-6 custom-control custom-radio">
+                                    <input type="radio" id="Leisure" name="taskLabel" class="custom-control-input"
+                                        value="Leisure">
+                                    <label class="custom-control-label" for="Leisure">Leisure</label><br>
+                                </div>
+
+                            </div> -->
+                        <div class="row d-flex align-items-center">
+                            <div class="col-md-4 col-12">
+                                <i class="lnr lnr-bookmark font-weight-bold"></i>
+                                <span class="display-5">
+                                    Label Me
+                                </span>
+                            </div>
+                            <div class="col-md-8 d-flex mr-auto align-items-center col-12">
+                                <div class="tasklabelselect">
+                                    <select class="custom-select" id="tasklabel" name="tasklabel">
+                                        <option value="None" selected>None</option>
+                                        <option value="Academic">Academic</option>
+                                        <option value="Shopping">Shopping</option>
+                                        <option value="Self Improvement">Self Improvement</option>
+                                        <option value="Chore">Chore</option>
+                                        <option value="Hobby">Hobby</option>
+                                        <option value="Physical Activity">Physical Activity</option>
+                                        <option value="Leisure">Leisure</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js"
+        integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous">
+    </script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js"
+        integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous">
+    </script>
+    <script src="./javascript/home.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('body').bootstrapMaterialDesign();
+        });
+    </script>
+</body>
+
+</html>
