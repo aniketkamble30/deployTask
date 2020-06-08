@@ -24,7 +24,7 @@ function check() {
         headers: { Authorization: `Bearer ${token[0]}` },
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        url: `http://localhost:5000/verify`,
+        url: `https://taskido-app.herokuapp.com/verify`,
       })
         .done(() => $("body").show())
         .fail(() => (window.location.href = "login.html"));

@@ -16,7 +16,7 @@ $("#register").click(function (e) {
         }),
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        url: "http://localhost:5000/register",
+        url: "https://taskido-app.herokuapp.com/register",
       })
         .done(function () {
           $("#name,#email,#password").val("");
